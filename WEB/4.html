@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>test_3</title>
+  <script>
+    var name = "Nika";
+    var flag = true;
+    var cnt = 0;
+    var counter = 0
+
+    for(let n=0; n < 10; n++){
+      document.write("the name is: " + name + "</br>");
+    }
+
+    var a = 10;
+    var b = 20;
+
+    while(true){
+      let res = a + b;
+      if(res > 100){
+        document.write("neka poruka uz manje od 100 </br>...");
+        break;
+      } else {
+        a = a + 2;
+        b = b + 4;
+        counter += 1;
+      }
+    }
+    document.write("izašli iz while petlje...</br>");
+    document.write("broj prolaza kroz while petlju: " + counter + "</br>");
+  </script>
+</head>
+<body>
+
+</body>
+</html>

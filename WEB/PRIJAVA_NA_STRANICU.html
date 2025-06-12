@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Prijava</title>
+    <link rel="stylesheet" href="PRIJAVANASTRANICU.css">
+    <script>
+        function submitFormData(event) {
+            event.preventDefault(); // Sprječava da se forma automatski pošalje
+
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            let repeatPassword = document.getElementById('repeat-password').value;
+
+            if (password !== repeatPassword) {
+                alert("Lozinke se ne podudaraju.");
+                return false;
+            }
+
+            alert("Korisničko ime: " + username + "\nRegistracija uspješna!");
+        }
+    </script>
+</head>
+<body>
+<div class="topnav">
+    <a href="Zavrsna_stranica.html" class="active">
+        <img src="Free.jpg" width="50" height="50" alt="Logo">
+    </a>
+    <div id="myLinks">
+        <a href="NEWS.html">NEWS</a>
+        <a href="Contact.html">CONTACT</a>
+        <a href="GALERIJA.html">GALLERY</a>
+        <a href="OUR_PROJECTS.html">OUR PROJECTS</a>
+        <a href="ENGINEERING.html">ENGINEERING</a>
+        <a href="ABOUT_US.html">ABOUT US</a>
+    </div>
+</div>
+
+<form style="padding:10px;" onsubmit="submitFormData(event)">
+    <div class="container">
+
+        <h1>Make a new account</h1>
+        <p>Already have an account? Log in</p>
+        <hr>
+
+        <b>USER NAME</b>
+        <input type="text" placeholder="Enter your user name" id="username" name="username" required>
+
+        <b>PASSWORD</b>
+        <input type="password" placeholder="Enter Password" id="password" name="psw" required>
+
+        <b>REPEAT PASSWORD</b>
+        <input type="password" placeholder="Repeat Password" id="repeat-password" name="psw-repeat" required>
+
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+
+        <div class="clearfix">
+            <button type="button" class="cancelbtn" onclick="window.location.href='Zavrsna_stranica.html'">CANCEL</button>
+            <button type="submit" class="signupbtn">SIGN UP</button>
+        </div>
+        <script>
+        function resetForm() {
+            document.getElementById('user_name_field').value = "";
+            document.getElementById('password_field').value = "";
+            document.getElementById('email_field').value = "";
+            document.getElementById('confirm_password_field').value = "";
+            document.getElementById('year_of_study_field').selectedIndex = 0;
+        }
+        </script>
+        <footer>
+            <p>Author: Paola Brzoja<br>
+                College: UNIZD<br>
+                <a href="mailto:MomentumserviceInternational@gmail.com">MomentumserviceInternational@gmail.com</a></p>
+            <a href="https://instagram.com/MSI_Home" target="_blank">Instagram: MSI_Home</a><br>
+            <a href="https://x.com/MSI_Home" target="_blank">X: MSI_Home1</a><br>
+            <a href="https://facebook.com/MSI_International" target="_blank">Facebook: MSI_International</a>
+        </footer>
+    </div>
+</form>
+</body>
+</html>

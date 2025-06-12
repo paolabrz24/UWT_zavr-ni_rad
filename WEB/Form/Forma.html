@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Web Form</title>
+    <link rel="stylesheet" href="forma_css.css" type="text/css">
+    <script src="form_js.js" type="application/javascript"></script>
+</head>
+<body>
+<h1 class="user_title">Podaci korisnika</h1>
+<hr/>
+<div class="user_data">
+    <table class="user_data_table">
+        <tr>
+            <th class="fields">User name: </th>
+            <th><input title="Please enter user name..." id="usr_nm_field" type="text" value="" required> </th>
+
+        </tr>
+        <tr>
+            <th class="fields">User name: </th>
+            <th><input title="Please enter user email..." id="usr_mail_field" type="text" value="" required> </th>
+        </tr>
+
+        <tr>
+            <th class="comboFilmovi">Žanr - favorit: </th>
+            <th>
+                <label for="movie_selection"></label><select id="movie_selection" name="movie_selection" style="width:170px; height: auto">
+                <option value="none" selected disabled>Izaberite opciju...</option>
+                <option>Komedija</option>
+                <option>Drama</option>
+                <option>Horor</option>
+                <option>Romantika</option>
+                <option>Krimija</option>
+                <option>SF</option>
+                <option>Dokumentarni</option>
+            </select>
+            </th>
+        </tr>
+        <tr class="table_row">
+            <th class="empty_column"></th>
+            <th><input type="submit" value="Submit data" id="submit_button" onclick="processFormData()"></th>
+        </tr>
+    </table>
+</div>
+
+<div id = "info_div">
+    <p>Ako niste ništa unijeli imat ćete poruku o grešci, a u suprotnom će vam se prikazati podaci na ovoj stranici.</p>
+    <hr>
+</div>
+
+<p id="p_form_data">
+
+</p>
+
+<div id="date_div">
+
+</div>
+</body>
+</html>
