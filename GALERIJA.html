@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="GALERIJACS.css">
+    <title>Galerija</title>
+
+</head>
+<body>
+<div class="topnav">
+    <a href="Zavrsna_stranica.html" class="active">
+        <img src="Free.jpg" width="50" height="50" alt="MSI Logo">
+    </a>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+
+    <div id="myLinks">
+        <a href="NEWS.html">NEWS</a>
+        <a href="ABOUT_US.html">ABOUT</a>
+        <a href="OUR_PROJECTS.html">OUR PROJECTS</a>
+        <a href="Contact.html">CONTACT US</a>
+        <a href="ENGINEERING.html">ENGINEERING</a>
+        <a href="PRIJAVA_NA_STRANICU.html">SIGN UP</a>
+    </div>
+</div>
+
+<div class="album">
+    <div class="responsive-container-block bg">
+        <div class="responsive-container-block img-cont">
+            <img class="img" src="Detailed%20steampunk%20robot%20portrait%20with%20realistic%20metal%20armor%20and%20gears_.jpg" alt="Robot_1">
+            <img class="img" src="Model_robotske_ruke.jpg" alt="Giorna">
+            <img class="img img-last" src="Generate%20Images%20for%20Free.jpg" alt="RUKA">
+            <img class="img img-last" src="Algoritam.jpg" alt="Algoritam">
+            <img class="img img-last" src="NASA%20Space%20Shuttle%20Blueprint%20(Vertical%20Version)%20by%20BGALAXY%20%7C%20Redbubble.jpg" alt="NASA">
+            <img class="img im-last" src="Transform,%20Adapt,%20Excel_%20Your%20Guide%20to%20Cybernetic….jpg" alt="Kralježnicamodel">
+        </div>
+        <div class="responsive-container-block img-cont">
+            <img class="img img-big" src="Mehanizam_unutar_modela.jpg" alt="Unutar Modela">
+            <img class="img img-big img-last" src="Robi.jpg" alt="Robi">
+        </div>
+        <div class="responsive-container-block img-cont">
+            <img class="img" src="Fibonači.jpg" alt="Fibby">
+            <img class="img" src="DICA.jpg" alt="Dica">
+            <img class="img" src="Dica_2.jpg" alt="Dica">
+            <img class="img" src="CFD%20simulation%20of%20car%20park%20ventilation%20system.jpg" alt="Stimulacija">
+            <img class="img" src="pexels-divinetechygirl-1181438.jpg" alt="Stimulacija">
+            <img class="img" src="Reaktor.jpg" alt="Reaktor">
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Author: Paola Brzoja<br>
+    <p>College: UNIZD<br>
+        <a href="mailto:MomentumserviceInternational@gmail.com">MomentumserviceInternational@gmail.com</a></p>
+    <div class="social-links">
+        <a href="#" class="social-link">Instagram: MSI_Home</a>
+        <a href="#" class="social-link">X: MSI_Home1</a>
+        <a href="#" class="social-link">Facebook: MSI_International</a>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const myLinks = document.getElementById('myLinks');
+
+    menuBtn.addEventListener('click', () => {
+        myLinks.classList.toggle('active');
+    });
+
+    // Image modal functionality
+    const modal = document.createElement('div');
+    modal.id = 'imageModal';
+    modal.className = 'modal';
+    modal.innerHTML = `
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImage">
+        `;
+    document.body.appendChild(modal);
+
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.getElementsByClassName('close')[0];
+    const images = document.querySelectorAll('.img');
+
+    for (let img of images) {
+        img.addEventListener('click', function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            modalImg.alt = this.alt;
+        });
+    }
+
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    // Modal styles
+    const style = document.createElement('style');
+    style.textContent = `
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.8);
+            }
+
+            .modal-content {
+                margin: auto;
+                display: block;
+                max-width: 90%;
+                max-height: 90%;
+                margin-top: 50px;
+            }
+
+            .close {
+                position: absolute;
+                top: 15px;
+                right: 35px;
+                color: white;
+                font-size: 40px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        `;
+    document.head.appendChild(style);
+</script>
+</body>
+</html>

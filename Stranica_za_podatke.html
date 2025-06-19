@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Data.css">
+  <title>Prikaz Podataka</title>
+</head>
+<body>
+<!-- Navigation Section (same as form page) -->
+<div class="topnav">
+  <a href="Zavrsna_stranica.html" class="active">
+    <img src="Free.jpg" width="50" height="50" alt="Logo">
+  </a>
+  <div id="myLinks">
+    <a href="NEWS.html">NEWS</a>
+    <a href="Contact.html">CONTACT</a>
+    <a href="ABOUT_US.html">ABOUT</a>
+    <a href="GALERIJA.html">GALLERY</a>
+    <a href="OUR_PROJECTS.html">OUR PROJECTS</a>
+    <a href="ENGINEERING.html">ENGINEERING</a>
+    <a href="PRIJAVA_NA_STRANICU.html">SIGN UP</a>
+  </div>
+</div>
+
+<!-- Data Display Section -->
+<div class="data-container">
+  <h1>Vaši registracijski podaci</h1>
+  <div id="dataDisplay"></div>
+  <a href="PRIJAVA_NA_STRANICU.html" class="back-btn">Natrag na obrazac</a>
+  <a href="Zavrsna_stranica.html" class="back-btn">Početna stranica</a>
+</div>
+
+<script>
+  // Retrieve and display data
+  const registrationData = JSON.parse(localStorage.getItem('registrationData'));
+  const dataDisplay = document.getElementById('dataDisplay');
+
+  if (registrationData) {
+    // Create display elements for each data field
+    for (const [key, value] of Object.entries(registrationData)) {
+      const dataItem = document.createElement('div');
+      dataItem.className = 'data-item';
+
+      const label = document.createElement('div');
+      label.className = 'data-label';
+
+      // Format field names for display
+      switch(key) {
+        case 'username':
+          label.textContent = 'Korisničko ime:';
+          break;
+        case 'email':
+          label.textContent = 'Email adresa:';
+          break;
+        case 'country':
+          label.textContent = 'Država:';
+          break;
+        default:
+          label.textContent = key + ':';
+      }
+
+      const val = document.createElement('div');
+      val.className = 'data-value';
+      val.textContent = value || 'Nije navedeno';
+
+      dataItem.appendChild(label);
+      dataItem.appendChild(val);
+      dataDisplay.appendChild(dataItem);
+    }
+  } else {
+    dataDisplay.innerHTML = '<p>Nema pronađenih podataka. Molimo ispunite obrazac za registraciju.</p>';
+  }
+</script>
+</body>
+</html>

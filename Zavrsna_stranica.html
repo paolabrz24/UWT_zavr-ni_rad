@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Zavrsni_zadatak_uvod.css">
+    <link rel="stylesheet" href="Contact.html">
+    <link rel="stylesheet" href="ABOUT_US.html">
+    <link rel="stylesheet" href="OUR_PROJECTS.html">
+    <link rel="stylesheet" href="NEWS.html">
+    <link rel="stylesheet" href="ENGINEERING.html">
+    <link rel="stylesheet" href="PRIJAVA_NA_STRANICU.html">
+    <title>Momentum Solutions International</title>
+</head>
+<body>
+<div class="topnav">
+    <a href="Zavrsna_stranica.html" class="active">
+        <img src="Free.jpg" width="50" height="50"></a>
+
+    <div id="myLinks">
+        <a href="NEWS.html">NEWS</a>
+        <a href="Contact.html">CONTACT</a>
+        <a href="ABOUT_US.html">ABOUT</a>
+        <a href="GALERIJA.html">GALLERY</a>
+        <a href="OUR_PROJECTS.html">OUR PROJECTS</a>
+        <a href="ENGINEERING.html">ENGINEERING</a>
+        <a href="PRIJAVA_NA_STRANICU.html">SIGN UP</a>
+    </div>
+    <div style="padding-right:50px">
+    </div>
+</div>
+</div>
+
+<div id="container">
+    <video class="video-background" autoplay muted loop playsinline>
+        <source src="2792370-hd_1920_1080_30fps.mp4" type="video/mp4">
+    </video>
+    <div class="video-text">
+        <h1>Welcome to MSI</h1>
+        <h3>We make the world</h3>
+    </div>
+</div>
+
+
+<div id="txt">
+    <h3>Introduction</h3>
+    <p>
+        At MSI, we are driven by innovation, precision, and purpose.
+        As a leading developer of advanced robotic systems, we design intelligent solutions that revolutionize industries —
+        from manufacturing and logistics to healthcare and beyond. Our robots don’t just perform tasks; they learn, adapt,
+        and collaborate to create smarter, safer, and more efficient environments.
+    </p>
+</div>
+
+<h2>Our services include:</h2>
+<table>
+    <tr>
+        <th>Service</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Computational Fluid Dynamics (CFD)</td>
+        <td>High-precision simulations for analyzing airflow and thermal effects on robotic systems.</td>
+    </tr>
+    <tr>
+        <td>Simulator</td>
+        <td>Real-time environments for testing control systems, autonomous behavior, and system integration.</td>
+    </tr>
+    <tr>
+        <td>Seven Post Test Rig</td>
+        <td>Simulates dynamic forces to evaluate mechanical responses and durability under real-world loads.</td>
+    </tr>
+    <tr>
+        <td>Brake Dyno</td>
+        <td>Performance testing for robotic braking systems and actuator reliability.</td>
+    </tr>
+    <tr>
+        <td>Tire Modeling and Test Services</td>
+        <td>Custom modelling and testing for wheeled robots to ensure optimal grip, wear, and performance.</td>
+    </tr>
+    <tr>
+        <td>Wind Tunnel</td>
+        <td>Aerodynamic testing for drones and mobile robots to enhance stability and efficiency.</td>
+    </tr>
+</table>
+
+<script>
+    function sortTable(columnIndex) {
+        const table = document.getElementById("servicesTable");
+        const tbody = table.querySelector("tbody");
+        const rows = Array.from(tbody.querySelectorAll("tr"));
+        const headers = table.querySelectorAll("th");
+        const sortArrow = headers[columnIndex].querySelector(".sort-arrow");
+
+
+        rows.sort((a, b) => {
+            const aValue = a.cells[columnIndex].textContent.toLowerCase();
+            const bValue = b.cells[columnIndex].textContent.toLowerCase();
+
+            if (currentDirection === "asc") {
+                return aValue.localeCompare(bValue);
+            } else {
+                return bValue.localeCompare(aValue);
+            }
+        });
+
+
+        rows.forEach(row => tbody.appendChild(row));
+    }
+
+    function filterTable() {
+        const input = document.getElementById("searchInput");
+        const filter = input.value.toUpperCase();
+        const table = document.getElementById("servicesTable");
+        const tr = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < tr.length; i++) { // Skip header row
+            const tdService = tr[i].getElementsByTagName("td")[0];
+            const tdDescription = tr[i].getElementsByTagName("td")[1];
+
+            if (tdService || tdDescription) {
+                const serviceText = tdService.textContent || tdService.innerText;
+                const descriptionText = tdDescription.textContent || tdDescription.innerText;
+
+                if (serviceText.toUpperCase().indexOf(filter) > -1 ||
+                    descriptionText.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+
+
+                    highlightText(tdService, filter);
+                    highlightText(tdDescription, filter);
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+
+    function highlightText(element, filter) {
+        const text = element.textContent;
+        const regex = new RegExp(filter, "gi");
+
+
+        element.innerHTML = text;
+
+        if (filter.length > 0) {
+            element.innerHTML = text.replace(regex, match =>
+                `<span class="highlight">${match}</span>`
+            );
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const rows = document.querySelectorAll("#servicesTable tbody tr");
+
+        rows.forEach(row => {
+            row.addEventListener("mouseenter", function() {
+                this.style.backgroundColor = "#f5f5f5";
+                this.style.transition = "background-color 0.3s ease";
+            });
+
+            row.addEventListener("mouseleave", function() {
+                this.style.backgroundColor = "";
+            });
+        });
+    });
+</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Tema.css">
+    <title>Style Changer Demo</title>
+    <style>
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            transition: all 0.5s ease;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .style-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .style-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+<div class="content">
+    <h1>Style Changer Demo</h1>
+    <p>This is a demonstration of how to change page styles with JavaScript.</p>
+    <p>Click the button below to toggle between different styles.</p>
+
+    <button class="style-btn" id="styleButton">Change Style</button>
+</div>
+
+<script>
+    const styleButton = document.getElementById('styleButton');
+    let currentStyle = 0;
+
+    const styles = [
+        {
+            name: "Default Style",
+            bodyBg: "#f0f0f0",
+            contentBg: "white",
+            textColor: "#333",
+            headingColor: "#2c3e50",
+            borderColor: "#3498db",
+            btnBg: "#3498db"
+        },
+        {
+            name: "Dark Mode",
+            bodyBg: "#1a1a1a",
+            contentBg: "#2d2d2d",
+            textColor: "#f0f0f0",
+            headingColor: "#3498db",
+            borderColor: "#f39c12",
+            btnBg: "#f39c12"
+        },
+        {
+            name: "High Contrast",
+            bodyBg: "black",
+            contentBg: "white",
+            textColor: "black",
+            headingColor: "red",
+            borderColor: "blue",
+            btnBg: "red"
+        },
+        {
+            name: "Pastel Theme",
+            bodyBg: "#f9f7f7",
+            contentBg: "#dbe2ef",
+            textColor: "#112d4e",
+            headingColor: "#3f72af",
+            borderColor: "#769fcd",
+            btnBg: "#769fcd"
+        }
+    ];
+
+    function applyStyle(style) {
+        document.body.style.backgroundColor = style.bodyBg;
+        document.body.style.color = style.textColor;
+
+        const content = document.querySelector('.content');
+        content.style.backgroundColor = style.contentBg;
+
+        const heading = document.querySelector('h1');
+        heading.style.color = style.headingColor;
+        heading.style.borderBottomColor = style.borderColor;
+
+        styleButton.style.backgroundColor = style.btnBg;
+        styleButton.textContent = `Change Style (Current: ${style.name})`;
+    }
+
+    function changeStyle() {
+        currentStyle = (currentStyle + 1) % styles.length;
+        applyStyle(styles[currentStyle]);
+
+        localStorage.setItem('preferredStyle', currentStyle);
+    }
+
+    const savedStyle = localStorage.getItem('preferredStyle');
+    if (savedStyle) {
+        currentStyle = parseInt(savedStyle);
+        applyStyle(styles[currentStyle]);
+    }
+
+
+    styleButton.addEventListener('click', changeStyle);
+</script>
+
+<footer>
+    <p>Author: Paola Brzoja<br>
+    <p>College: UNIZD<br>
+    <h3>Follow us online:</h3>
+    <ul>
+        <li><a href="https://www.instagram.com" target="_blank">Instagram - MSI_Home</a></li>
+        <li><a href="https://www.twitter.com" target="_blank">Twitter - MSI_Home1</a></li>
+        <li><a href="https://www.facebook.com" target="_blank">Facebook - MSI_International</a></li>
+    </ul>
+</footer>
+</body>
+</html>

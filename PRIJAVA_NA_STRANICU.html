@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="PRIJAVANASTRANICU.css">
+    <title>Prijava</title>
+    <script>
+        function submitFormData(event) {
+            event.preventDefault(); // Prevent form from auto-submitting
+
+            // Get form values
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            let repeatPassword = document.getElementById('repeat-password').value;
+            let fullName = document.getElementById('full-name').value;
+            let email = document.getElementById('email').value;
+            let country = document.getElementById('country').value;
+            let membershipType = document.querySelector('input[name="membership"]:checked');
+            let notificationPref = document.querySelector('input[name="notification"]:checked');
+            let newsletter = document.getElementById('newsletter').checked;
+            let terms = document.getElementById('terms').checked;
+            let promotions = document.getElementById('promotions').checked;
+
+            // Validation
+            if (password !== repeatPassword) {
+                alert("Lozinke se ne podudaraju.");
+                return false;
+            }
+
+            if (!fullName) {
+                alert("Molimo unesite vaše puno ime.");
+                return false;
+            }
+
+            if (!email) {
+                alert("Molimo unesite vaš email.");
+                return false;
+            }
+
+            if (!terms) {
+                alert("Morate prihvatiti uvjete korištenja.");
+                return false;
+            }
+
+            // Prepare confirmation message
+            let message = "Korisničko ime: " + username + "\n" +
+                "Puno ime: " + fullName + "\n" +
+                "Email: " + email + "\n" +
+                "Zemlja: " + country + "\n" +
+                "Tip članstva: " + (membershipType ? membershipType.value : "Nije odabrano") + "\n" +
+                "Obavijesti: " + (notificationPref ? notificationPref.value : "Nije odabrano") + "\n" +
+                "Newsletter: " + (newsletter ? "Da" : "Ne") + "\n" +
+                "Promocije: " + (promotions ? "Da" : "Ne") + "\n" +
+                "\nRegistracija uspješna!";
+
+            alert(message);
+        }
+
+        function resetForm() {
+            document.getElementById('username').value = "";
+            document.getElementById('password').value = "";
+            document.getElementById('repeat-password').value = "";
+            document.getElementById('full-name').value = "";
+            document.getElementById('email').value = "";
+            document.getElementById('country').selectedIndex = 0;
+            document.querySelector('input[name="membership"][value="standard"]').checked = true;
+            document.getElementById('newsletter').checked = true;
+            document.getElementById('terms').checked = false;
+            document.getElementById('promotions').checked = false;
+        }
+    </script>
+</head>
+<body>
+<div class="topnav">
+    <a href="Zavrsna_stranica.html" class="active">
+        <img src="Free.jpg" width="50" height="50" alt="Logo">
+    </a>
+    <div id="myLinks">
+        <a href="NEWS.html">NEWS</a>
+        <a href="Contact.html">CONTACT</a>
+        <a href="GALERIJA.html">GALLERY</a>
+        <a href="OUR_PROJECTS.html">OUR PROJECTS</a>
+        <a href="ENGINEERING.html">ENGINEERING</a>
+        <a href="ABOUT_US.html">ABOUT US</a>
+    </div>
+</div>
+
+<form style="padding:10px;" onsubmit="submitFormData(event)">
+    <div class="container">
+        <h1>Make a new account</h1>
+        <p>Already have an account? <a href="#">Log in</a></p>
+        <hr>
+
+        <!-- Mandatory Text Fields -->
+        <div class="form-section">
+            <h3>Account Information</h3>
+            <b>USER NAME</b>
+            <input type="text" placeholder="Enter your user name" id="username" name="username" required>
+
+            <b>FULL NAME</b>
+            <input type="text" placeholder="Enter your full name" id="full-name" name="full-name" required>
+
+            <b>EMAIL</b>
+            <input type="text" placeholder="Enter your email" id="email" name="email" required>
+        </div>
+
+        <!-- Password Fields -->
+        <div class="form-section">
+            <h3>Password</h3>
+            <b>PASSWORD</b>
+            <input type="password" placeholder="Enter Password" id="password" name="psw" required>
+
+            <b>REPEAT PASSWORD</b>
+            <input type="password" placeholder="Repeat Password" id="repeat-password" name="psw-repeat" required>
+        </div>
+
+        <!-- Combobox (Select) -->
+        <div class="form-section">
+            <h3>Country</h3>
+            <select id="country" name="country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option value="croatia">Croatia</option>
+                <option value="germany">Germany</option>
+                <option value="france">France</option>
+                <option value="italy">Italy</option>
+                <option value="spain">Spain</option>
+            </select>
+        </div>
+
+        <!-- Radio Buttons -->
+        <div class="form-section">
+            <h3>Membership Type</h3>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="standard" name="membership" value="standard" checked>
+                    <label for="standard">Standard (Free)</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="premium" name="membership" value="premium">
+                    <label for="premium">Premium ($9.99/month)</label>
+                </div>
+            </div>
+
+            <h3>Notification Preferences</h3>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="email-notif" name="notification" value="email" checked>
+                    <label for="email-notif">Email notifications</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="browser-notif" name="notification" value="browser">
+                    <label for="browser-notif">Browser notifications</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="form-section">
+            <h3>Preferences</h3>
+            <div class="checkbox-group">
+                <div class="checkbox-option">
+                    <input type="checkbox" id="newsletter" name="newsletter" checked>
+                    <label for="newsletter">Subscribe to newsletter</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the terms and conditions*</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="promotions" name="promotions">
+                    <label for="promotions">Receive promotional offers</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <button type="button" class="cancelbtn" onclick="resetForm()">RESET</button>
+            <button type="submit" class="signupbtn">CONFIRM REGISTRATION</button>
+        </div>
+    </div>
+</form>
+
+<footer>
+    <p>Author: Paola Brzoja<br>
+        College: UNIZD<br>
+        <a href="mailto:MomentumserviceInternational@gmail.com">MomentumserviceInternational@gmail.com</a></p>
+    <a href="https://instagram.com/MSI_Home" target="_blank">Instagram: MSI_Home</a><br>
+    <a href="https://x.com/MSI_Home" target="_blank">X: MSI_Home1</a><br>
+    <a href="https://facebook.com/MSI_International" target="_blank">Facebook: MSI_International</a>
+</footer>
+</body>
+</html>

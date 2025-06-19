@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="ABOUT.css">
+  <title>About Us - MSI</title>
+
+</head>
+<body>
+<div class="topnav">
+  <a href="Zavrsna_stranica.html" class="active">
+    <img src="Free.jpg" width="50" height="50" alt="MSI Logo">
+  </a>
+
+  <button class="menu-btn" id="menuBtn">☰</button>
+
+  <div id="myLinks">
+    <a href="NEWS.html">NEWS</a>
+    <a href="Contact.html">CONTACT</a>
+    <a href="GALERIJA.html">GALLERY</a>
+    <a href="OUR_PROJECTS.html">OUR PROJECTS</a>
+    <a href="ENGINEERING.html">ENGINEERING</a>
+    <a href="PRIJAVA_NA_STRANICU.html">SIGN UP</a>
+  </div>
+</div>
+
+<main>
+  <h1>ABOUT US</h1>
+  <section>
+    <p>At MSI, we are driven by innovation, precision, and purpose. As a leading developer of advanced robotic systems, we design intelligent solutions that revolutionize industries — from manufacturing and logistics to healthcare and beyond. Our robots don't just perform tasks; they learn, adapt, and collaborate to create smarter, safer, and more efficient environments.</p>
+    <p>Whether you're looking to automate complex workflows, increase productivity, or explore the future of AI-driven robotics, MSI delivers cutting-edge technology tailored to your needs.</p>
+    <video controls src="Give_you_up.mp4" autoplay muted loop playsinline alt="Scientists working"></video>
+  </section>
+
+  <section>
+    <h2>History of our making</h2>
+    <p>Momentum Solution International (MSI)</p>
+    <p>Founded on April 28th, 2025 by visionary entrepreneur Paola Brzoja, Momentum Solution International (MSI) was created with a bold mission: to reshape the future of human mobility, capability, and innovation.</p>
+    <p>At MSI, we are pioneers in developing next-generation prosthetic legs, arms, and spinal solutions, giving people not just functionality, but freedom, strength, and confidence. Driven by a deep commitment to human potential, we combine advanced robotics and cutting-edge artificial intelligence to create products that don't just replace — they empower.</p>
+    <p>From revolutionary prosthetics to intelligent robotic systems, our innovations are designed to push the boundaries of what's possible. Every creation at MSI embodies our core belief: technology should enhance life, restore dreams, and move humanity forward.</p>
+    <p>Headquartered globally, our multidisciplinary team of engineers, scientists, and visionaries work tirelessly to deliver solutions that are smart, adaptive, and deeply human-centered.</p>
+    <p>At Momentum Solution International, the future isn't just coming — we are the future of technology inspired by old designs. The past is history. The present is past. The future is now.</p>
+    <img src="pexels-divinetechygirl-1181438.jpg" alt="Our team at work">
+  </section>
+
+  <section>
+    <h2>Our Mission</h2>
+    <p>At Momentum Solution International (MSI), our mission is to transform lives through intelligent innovation. We strive to create world-class prosthetics, robotics, and AI solutions that restore mobility, elevate human potential, and empower individuals to live without limits. By blending cutting-edge technology with compassion, we aim to build a future where every person can move, dream, and achieve freely.</p>
+    <video controls src="8059189-uhd_4096_2160_25fps.mp4" autoplay muted loop playsinline alt="Human-robot collaboration"></video>
+  </section>
+
+  <section>
+    <h2>Our Vision</h2>
+    <p>We envision a world where human ability is not defined by limitation, but by possibility. Through relentless innovation, collaboration, and a commitment to excellence, MSI seeks to be the global leader in life-enhancing technology — revolutionizing healthcare, robotics, and artificial intelligence to create a more accessible, empowered, and connected world for all.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Author: Paola Brzoja<br>
+  <p>College: UNIZD<br>
+    <a href="mailto:MomentumserviceInternational@gmail.com">MomentumserviceInternational@gmail.com</a></p>
+  <div class="social-links">
+    <a href="#" class="social-link">Instagram: MSI_Home</a>
+    <a href="#" class="social-link">X: MSI_Home1</a>
+    <a href="#" class="social-link">Facebook: MSI_International</a>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const myLinks = document.getElementById('myLinks');
+
+  menuBtn.addEventListener('click', () => {
+    myLinks.classList.toggle('active');
+  });
+
+  // Scroll animation
+  const sections = document.querySelectorAll('section');
+
+  function checkVisibility() {
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      if (sectionTop < windowHeight - 100) {
+        section.classList.add('visible');
+      }
+    });
+  }
+
+  // Check on load
+  window.addEventListener('load', checkVisibility);
+
+  // Check on scroll
+  window.addEventListener('scroll', checkVisibility);
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+</body>
+</html>

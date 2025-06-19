@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - Momentum Service International</title>
+    <link rel="stylesheet" href="News_css.css">
+</head>
+<body>
+<div class="topnav">
+    <a href="Zavrsna_stranica.html" class="active">
+        <img src="Free.jpg" width="50" height="50" alt="MSI Logo">
+    </a>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+
+    <div id="myLinks">
+        <a href="Contact.html">CONTACT</a>
+        <a href="ABOUT_US.html">ABOUT</a>
+        <a href="GALERIJA.html">GALLERY</a>
+        <a href="OUR_PROJECTS.html">OUR PROJECTS</a>
+        <a href="ENGINEERING.html">ENGINEERING</a>
+        <a href="PRIJAVA_NA_STRANICU.html">SIGN UP</a>
+    </div>
+</div>
+
+<main>
+    <h1>NEWS</h1>
+
+    <section>
+        <h2>WIN: An Exclusive Prototype of our AI model and helper PMAI</h2>
+        <img src="3D%20robot%20body%20image%20with%20Ai.jpg" width="500" height="300" alt="PMAI AI Model" class="enlargeable">
+        <p>Our latest AI assistant PMAI is revolutionizing human-machine interaction with advanced natural language processing and predictive capabilities.</p>
+        <button class="read-more-btn">Read More</button>
+        <div class="more-content" style="display: none;">
+            <p>PMAI features include real-time language translation, contextual understanding, and adaptive learning algorithms that make it the most advanced assistant on the market.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>NEW PROJECTS COMING UP</h2>
+        <p>New year new MSI this year we will be introducing our new AI and prosthetic models!</p>
+        <div class="image-gallery">
+            <img src="Spinal%20Chain_%20Bio-Tech%20Spine%20Adornment.jpg" width="500" height="300" alt="Bio-Tech Spine" class="enlargeable">
+            <img src="Unknown-2%20copy%202.jpg" width="500" height="300" alt="Helmet Prototype" class="enlargeable">
+        </div>
+        <div class="project-counter">
+            <p>Days until launch: <span id="countdown"></span></p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Hospitality</h2>
+        <p>Our new finished, high tech hospitality center</p>
+        <img src="Sci%20Fi%20Interior%20laboratory,%20alireza%20farhadi.jpg" width="500" height="300" alt="Hospitality" class="enlargeable">
+        <div class="visitor-counter">
+            <p>Visitors this month: <span id="visitorCount">0</span></p>
+        </div>
+    </section>
+
+    <section>
+        <h2>OUR PARTNERSHIP WITH FORMULA ONE TEAM RED BULL</h2>
+        <img src="Secrets%20of%20a%20Formula%201%20Front%20Wing%20-%20Computational%20Fluid%20Dynamics%20%7C%20CFD%20%7C%20TotalSim.jpg" alt="Formula 1" height="450" width="450" class="enlargeable">
+        <p>This partnership will leverage our AI technology to enhance aerodynamics and performance analysis.</p>
+    </section>
+
+    <section>
+        <h2>Subscribe to our Newsletter</h2>
+        <form id="newsletterForm">
+            <input type="email" id="emailInput" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+            <p id="formFeedback"></p>
+        </form>
+    </section>
+</main>
+
+<!-- The Modal -->
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTopBtn" title="Go to top">↑</button>
+
+<footer>
+    <p>Author: Paola Brzoja<br>
+    <p>College: UNIZD<br>
+        <a href="mailto:MomentumserviceInternational@gmail.com">MomentumserviceInternational@gmail.com</a></p>
+    <div class="social-links">
+        <a href="#" class="social-link">Instagram: MSI_Home</a>
+        <a href="#" class="social-link">X: MSI_Home1</a>
+        <a href="#" class="social-link">Facebook: MSI_International</a>
+    </div>
+    <p id="lastUpdated"></p>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const myLinks = document.getElementById('myLinks');
+
+    menuBtn.addEventListener('click', () => {
+        myLinks.classList.toggle('active');
+    });
+
+
+
+    // Image modal functionality
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.getElementsByClassName('close')[0];
+    const enlargeableImages = document.getElementsByClassName('enlargeable');
+
+    for (let img of enlargeableImages) {
+        img.addEventListener('click', function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        });
+    }
+
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTopBtn');
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.style.display = "block";
+        } else {
+            backToTopBtn.style.display = "none";
+        }
+    });
+
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+
+    // Read more buttons
+    const readMoreBtns = document.getElementsByClassName('read-more-btn');
+
+    for (let btn of readMoreBtns) {
+        btn.addEventListener('click', function() {
+            const moreContent = this.nextElementSibling;
+            if (moreContent.style.display === "none") {
+                moreContent.style.display = "block";
+                this.textContent = "Read Less";
+            } else {
+                moreContent.style.display = "none";
+                this.textContent = "Read More";
+            }
+        });
+    }
+
+    // Countdown timer
+    const countdownEl = document.getElementById('countdown');
+    const launchDate = new Date();
+    launchDate.setDate(launchDate.getDate() + 45); // 45 days from now
+
+    function updateCountdown() {
+        const now = new Date();
+        const diff = launchDate - now;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Visitor counter (simulated)
+    const visitorCountEl = document.getElementById('visitorCount');
+    let visitors = Math.floor(Math.random() * 1000) + 500;
+    visitorCountEl.textContent = visitors.toLocaleString();
+
+    setInterval(() => {
+        visitors += Math.floor(Math.random() * 5);
+        visitorCountEl.textContent = visitors.toLocaleString();
+    }, 10000);
+
+    // Newsletter form
+    const newsletterForm = document.getElementById('newsletterForm');
+    const emailInput = document.getElementById('emailInput');
+    const formFeedback = document.getElementById('formFeedback');
+
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (emailInput.checkValidity()) {
+            formFeedback.textContent = "Thank you for subscribing!";
+            formFeedback.style.color = "green";
+            emailInput.value = "";
+
+            setTimeout(() => {
+                formFeedback.textContent = "";
+            }, 3000);
+        } else {
+            formFeedback.textContent = "Please enter a valid email address";
+            formFeedback.style.color = "red";
+        }
+    });
+
+    // Last updated date
+    document.getElementById('lastUpdated').textContent = `Last updated: ${new Date().toLocaleDateString()}`;
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+</body>
+</html>

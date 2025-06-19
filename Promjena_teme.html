@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Tema.css">
+  <title>Style Changer Demo</title>
+  <style>
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      transition: all 0.5s ease;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+
+    .style-btn {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .style-btn:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+<div class="content">
+  <h1>Style Changer Demo</h1>
+  <p>This is a demonstration of how to change page styles with JavaScript.</p>
+  <p>Click the button below to toggle between different styles.</p>
+
+  <button class="style-btn" id="styleButton">Change Style</button>
+</div>
+
+<script>
+  const styleButton = document.getElementById('styleButton');
+  let currentStyle = 0;
+
+  const styles = [
+    {
+      name: "Default Style",
+      bodyBg: "#f0f0f0",
+      contentBg: "white",
+      textColor: "#333",
+      headingColor: "#2c3e50",
+      borderColor: "#3498db",
+      btnBg: "#3498db"
+    },
+    {
+      name: "Dark Mode",
+      bodyBg: "#1a1a1a",
+      contentBg: "#2d2d2d",
+      textColor: "#f0f0f0",
+      headingColor: "#3498db",
+      borderColor: "#f39c12",
+      btnBg: "#f39c12"
+    },
+    {
+      name: "High Contrast",
+      bodyBg: "black",
+      contentBg: "white",
+      textColor: "black",
+      headingColor: "red",
+      borderColor: "blue",
+      btnBg: "red"
+    },
+    {
+      name: "Pastel Theme",
+      bodyBg: "#f9f7f7",
+      contentBg: "#dbe2ef",
+      textColor: "#112d4e",
+      headingColor: "#3f72af",
+      borderColor: "#769fcd",
+      btnBg: "#769fcd"
+    }
+  ];
+
+  function applyStyle(style) {
+    document.body.style.backgroundColor = style.bodyBg;
+    document.body.style.color = style.textColor;
+
+    const content = document.querySelector('.content');
+    content.style.backgroundColor = style.contentBg;
+
+    const heading = document.querySelector('h1');
+    heading.style.color = style.headingColor;
+    heading.style.borderBottomColor = style.borderColor;
+
+    styleButton.style.backgroundColor = style.btnBg;
+    styleButton.textContent = `Change Style (Current: ${style.name})`;
+  }
+
+  function changeStyle() {
+    currentStyle = (currentStyle + 1) % styles.length;
+    applyStyle(styles[currentStyle]);
+
+    localStorage.setItem('preferredStyle', currentStyle);
+  }
+
+  const savedStyle = localStorage.getItem('preferredStyle');
+  if (savedStyle) {
+    currentStyle = parseInt(savedStyle);
+    applyStyle(styles[currentStyle]);
+  }
+
+
+  styleButton.addEventListener('click', changeStyle);
+</script>
+</body>
+</html>

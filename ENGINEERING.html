@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Engingokaput.css">
+    <title>Engineering Services</title>
+</head>
+<body>
+<div class="topnav">
+    <a href="Zavrsna_stranica.html" class="active">
+        <img src="Free.jpg" width="50" height="50" alt="MSI Logo">
+    </a>
+
+    <button class="menu-btn" id="menuBtn">☰</button>
+
+    <div id="myLinks">
+        <a href="NEWS.html">NEWS</a>
+        <a href="ABOUT_US.html">ABOUT</a>
+        <a href="GALERIJA.html">GALLERY</a>
+        <a href="OUR_PROJECTS.html">OUR PROJECTS</a>
+        <a href="Contact.html">CONTACT</a>
+        <a href="PRIJAVA_NA_STRANICU.html">SIGN UP</a>
+    </div>
+</div>
+
+<main>
+    <h1>Engineering Services</h1>
+    <p>At the forefront of robotics innovation, we offer a comprehensive suite of advanced engineering services designed to support research, development, and performance optimization.</p>
+    <p>Our state-of-the-art facilities and cutting edge tools empower engineers and developers to push the boundaries of automation and intelligent systems.</p>
+
+    <h2>Our services include:</h2>
+    <table>
+        <tr>
+            <th>Service</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Computational Fluid Dynamics (CFD)</td>
+            <td>High-precision simulations for analyzing airflow and thermal effects on robotic systems.</td>
+        </tr>
+        <tr>
+            <td>Simulator</td>
+            <td>Real-time environments for testing control systems, autonomous behavior, and system integration.</td>
+        </tr>
+        <tr>
+            <td>Seven Post Test Rig</td>
+            <td>Simulates dynamic forces to evaluate mechanical responses and durability under real-world loads.</td>
+        </tr>
+        <tr>
+            <td>Brake Dyno</td>
+            <td>Performance testing for robotic braking systems and actuator reliability.</td>
+        </tr>
+        <tr>
+            <td>Tire Modeling and Test Services</td>
+            <td>Custom modelling and testing for wheeled robots to ensure optimal grip, wear, and performance.</td>
+        </tr>
+        <tr>
+            <td>Wind Tunnel</td>
+            <td>Aerodynamic testing for drones and mobile robots to enhance stability and efficiency.</td>
+        </tr>
+    </table>
+</main>
+
+<footer>
+    <p>Author: Paola Brzoja<br>
+    <p>College: UNIZD<br>
+        <a href="mailto:MomentumserviceInternational@gmail.com">MomentumserviceInternational@gmail.com</a></p>
+    <div class="social-links">
+        <a href="#" class="social-link">Instagram: MSI_Home</a>
+        <a href="#" class="social-link">X: MSI_Home1</a>
+        <a href="#" class="social-link">Facebook: MSI_International</a>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const myLinks = document.getElementById('myLinks');
+
+    menuBtn.addEventListener('click', () => {
+        myLinks.classList.toggle('active');
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+</body>
+</html>
