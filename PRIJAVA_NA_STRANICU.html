@@ -6,9 +6,8 @@
     <title>Prijava</title>
     <script>
         function submitFormData(event) {
-            event.preventDefault(); // Prevent form from auto-submitting
+            event.preventDefault(); 
 
-            // Get form values
             let username = document.getElementById('username').value;
             let password = document.getElementById('password').value;
             let repeatPassword = document.getElementById('repeat-password').value;
@@ -21,7 +20,6 @@
             let terms = document.getElementById('terms').checked;
             let promotions = document.getElementById('promotions').checked;
 
-            // Validation
             if (password !== repeatPassword) {
                 alert("Lozinke se ne podudaraju.");
                 return false;
@@ -42,7 +40,6 @@
                 return false;
             }
 
-            // Prepare confirmation message
             let message = "Korisničko ime: " + username + "\n" +
                 "Puno ime: " + fullName + "\n" +
                 "Email: " + email + "\n" +
@@ -91,7 +88,6 @@
         <p>Already have an account? <a href="#">Log in</a></p>
         <hr>
 
-        <!-- Mandatory Text Fields -->
         <div class="form-section">
             <h3>Account Information</h3>
             <b>USER NAME</b>
@@ -104,7 +100,6 @@
             <input type="text" placeholder="Enter your email" id="email" name="email" required>
         </div>
 
-        <!-- Password Fields -->
         <div class="form-section">
             <h3>Password</h3>
             <b>PASSWORD</b>
@@ -114,7 +109,6 @@
             <input type="password" placeholder="Repeat Password" id="repeat-password" name="psw-repeat" required>
         </div>
 
-        <!-- Combobox (Select) -->
         <div class="form-section">
             <h3>Country</h3>
             <select id="country" name="country" required>
@@ -127,7 +121,6 @@
             </select>
         </div>
 
-        <!-- Radio Buttons -->
         <div class="form-section">
             <h3>Membership Type</h3>
             <div class="radio-group">
@@ -154,7 +147,6 @@
             </div>
         </div>
 
-        <!-- Checkboxes -->
         <div class="form-section">
             <h3>Preferences</h3>
             <div class="checkbox-group">
