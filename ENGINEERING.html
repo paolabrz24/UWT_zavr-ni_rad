@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Engingokaput.css">
     <title>Engineering Services</title>
+
 </head>
 <body>
 <div class="topnav">
@@ -18,7 +19,6 @@
         <a href="NEWS.html">NEWS</a>
         <a href="ABOUT_US.html">ABOUT</a>
         <a href="GALERIJA.html">GALLERY</a>
-        <a href="OUR_PROJECTS.html">OUR PROJECTS</a>
         <a href="Contact.html">CONTACT</a>
         <a href="PRIJAVA_NA_STRANICU.html">SIGN UP</a>
     </div>
@@ -28,6 +28,49 @@
     <h1>Engineering Services</h1>
     <p>At the forefront of robotics innovation, we offer a comprehensive suite of advanced engineering services designed to support research, development, and performance optimization.</p>
     <p>Our state-of-the-art facilities and cutting edge tools empower engineers and developers to push the boundaries of automation and intelligent systems.</p>
+
+    <div class="service-selector">
+        <label for="serviceType">Select a Service to Learn More:</label>
+        <select id="serviceType" name="serviceType">
+            <option value="">-- Please select a service --</option>
+            <option value="cfd">Computational Fluid Dynamics (CFD)</option>
+            <option value="simulator">Simulator Testing</option>
+            <option value="test-rig">Seven Post Test Rig</option>
+            <option value="brake-dyno">Brake Dyno Testing</option>
+            <option value="tire-modeling">Tire Modeling Services</option>
+            <option value="wind-tunnel">Wind Tunnel Testing</option>
+        </select>
+
+        <div id="cfd-info" class="service-info">
+            <h3>Computational Fluid Dynamics (CFD)</h3>
+            <p>Our CFD services provide high-fidelity simulations of fluid flow and thermal dynamics, essential for optimizing robot performance in various environments. We use ANSYS Fluent and OpenFOAM for accurate results.</p>
+        </div>
+
+        <div id="simulator-info" class="service-info">
+            <h3>Simulator Testing</h3>
+            <p>Real-time simulation environments that allow for comprehensive testing of control algorithms and autonomous behaviors before physical prototyping.</p>
+        </div>
+
+        <div id="test-rig-info" class="service-info">
+            <h3>Seven Post Test Rig</h3>
+            <p>Advanced mechanical testing platform that simulates real-world dynamic loads to validate structural integrity and durability of robotic systems.</p>
+        </div>
+
+        <div id="brake-dyno-info" class="service-info">
+            <h3>Brake Dyno Testing</h3>
+            <p>Precision testing of braking systems and actuators under various load conditions to ensure reliability and performance.</p>
+        </div>
+
+        <div id="tire-modeling-info" class="service-info">
+            <h3>Tire Modeling Services</h3>
+            <p>Custom tire models and testing for wheeled robots, including terrain interaction analysis and wear pattern prediction.</p>
+        </div>
+
+        <div id="wind-tunnel-info" class="service-info">
+            <h3>Wind Tunnel Testing</h3>
+            <p>Aerodynamic performance evaluation for drones and mobile robots, with wind speeds up to 200 km/h and full instrumentation.</p>
+        </div>
+    </div>
 
     <h2>Our services include:</h2>
     <table>
@@ -74,7 +117,7 @@
 </footer>
 
 <script>
-    // Mobile menu toggle
+
     const menuBtn = document.getElementById('menuBtn');
     const myLinks = document.getElementById('myLinks');
 
@@ -82,7 +125,23 @@
         myLinks.classList.toggle('active');
     });
 
-    // Smooth scrolling for anchor links
+    const serviceSelect = document.getElementById('serviceType');
+    const serviceInfoDivs = document.querySelectorAll('.service-info');
+
+    serviceSelect.addEventListener('change', function() {
+
+        serviceInfoDivs.forEach(div => {
+            div.style.display = 'none';
+        });
+
+        if (this.value) {
+            const selectedInfo = document.getElementById(`${this.value}-info`);
+            if (selectedInfo) {
+                selectedInfo.style.display = 'block';
+            }
+        }
+    });
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
