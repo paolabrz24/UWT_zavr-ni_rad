@@ -7,7 +7,7 @@
   <title>Prikaz Podataka</title>
 </head>
 <body>
-<!-- Navigation Section (same as form page) -->
+
 <div class="topnav">
   <a href="Zavrsna_stranica.html" class="active">
     <img src="Free.jpg" width="50" height="50" alt="Logo">
@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<!-- Data Display Section -->
+
 <div class="data-container">
   <h1>Vaši registracijski podaci</h1>
   <div id="dataDisplay"></div>
@@ -32,12 +32,12 @@
 </div>
 
 <script>
-  // Retrieve and display data
+
   const registrationData = JSON.parse(localStorage.getItem('registrationData'));
   const dataDisplay = document.getElementById('dataDisplay');
 
   if (registrationData) {
-    // Create display elements for each data field
+  
     for (const [key, value] of Object.entries(registrationData)) {
       const dataItem = document.createElement('div');
       dataItem.className = 'data-item';
@@ -45,7 +45,7 @@
       const label = document.createElement('div');
       label.className = 'data-label';
 
-      // Format field names for display
+     
       switch(key) {
         case 'username':
           label.textContent = 'Korisničko ime:';
